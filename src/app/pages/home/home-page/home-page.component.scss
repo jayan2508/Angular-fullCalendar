@@ -1,0 +1,281 @@
+@import "../../../../scss/variable/variable";
+
+.main-layout {
+  height: 100%;
+  nz-sider {
+    background-color: $background-color;
+    border-right: 1px solid $sider-border;
+    .logo {
+      height: 50px;
+      margin: 16px;
+      background: $sider-logo-bg;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      img {
+        height: 100%;
+      }
+      p {
+        margin: 0;
+        font-size: 1.5rem;
+        color: $black;
+      }
+    }
+    .list {
+      border-top: 1px solid $sider-list-border;
+      height: 661px;
+      overflow: auto;
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $scrollbar-bg;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: $scrollbar-bg;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $scrollbar-thumb-bg;
+      }
+      .checkbox-container {
+        padding: 10px 24px;
+        div {
+          margin: 10px;
+          label {
+            color: $background-color;
+          }
+        }
+      }
+    }
+  }
+  nz-header {
+    background: $background-color;
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nz-content {
+    margin: 16px 16px;
+    .inner-content {
+      padding: 24px;
+      background: $background-color;
+      min-height: 360px;
+      height: 100%;
+      overflow: auto;
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $scrollbar-bg;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: $scrollbar-bg;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $scrollbar-thumb-bg;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .ant-tabs-tabpane {
+  padding: 24px;
+  overflow: auto;
+}
+label {
+  color: $background-color;
+}
+.header-container {
+  padding: 16px;
+  h1 {
+    margin-bottom: 0px;
+  }
+  .profile-container {
+    display: flex;
+    align-items: center;
+  }
+  .avatar {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-radius: 50px;
+    color: $background-color;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  .profile-name {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+
+    .user-name {
+      font-weight: bold;
+      max-height: 41px;
+      display: flex;
+      justify-content: end;
+      align-items: start;
+    }
+
+    .user-email {
+      font-size: 0.9em;
+      max-height: 41px;
+      color: $profile-user-color;
+      display: flex;
+      justify-content: end;
+      align-items: end;
+    }
+  }
+}
+
+.popconfirm-content {
+  width: 300px;
+  .profile-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .avatar {
+      width: 65px;
+      height: 65px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      border-radius: 50px;
+      color: $background-color;
+      font-size: 1.6rem;
+      cursor: pointer;
+      margin: 10px auto;
+    }
+    .user-name {
+      font-weight: bold;
+    }
+  }
+  .button-content {
+    display: flex;
+    gap: 2px;
+    width: 100%;
+    margin-top: 10px;
+    button {
+      height: 40px;
+      width: 50%;
+      border: none;
+      text-align: start;
+      background-color: $profile-btn-bg;
+      color: $background-color;
+      cursor: pointer;
+      padding: 0px 20px;
+      i {
+        margin-right: 5px;
+      }
+      &:hover {
+        background-color: $profile-btn-hover-bg;
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+      }
+    }
+    .add-account {
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+    }
+    .sign-out {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+  }
+}
+.event-modal-container {
+  .form-container {
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      label {
+        color: $black;
+        font-weight: 500;
+      }
+      input,
+      nz-date-picker,
+      nz-time-picker {
+        border: 1px solid $picker-border;
+        padding: 5px 10px;
+        border-radius: 2px;
+      }
+    }
+    .time-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      div {
+        width: 100%;
+        margin: 0;
+      }
+      .time-picker-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span {
+          margin: 0 10px;
+        }
+        nz-time-picker {
+          width: 100%;
+        }
+      }
+    }
+    .color-palette {
+      label {
+        border-radius: 50%;
+        margin: 0 3px;
+        border: none;
+      }
+      .color1 {
+        background-color: $color1-bg;
+      }
+      .color2 {
+        background-color: $color2-bg;
+      }
+      .color3 {
+        background-color: $color3-bg;
+      }
+      .color4 {
+        background-color: $color4-bg;
+      }
+      .color5 {
+        background-color: $color5-bg;
+      }
+      .color6 {
+        background-color: $color6-bg;
+      }
+      .color7 {
+        background-color: $color7-bg;
+      }
+      .color8 {
+        background-color: $color8-bg;
+      }
+      .color9 {
+        background-color: $color9-bg;
+      }
+    }
+  }
+}
+
+@media (max-width: 740px) {
+  nz-sider {
+    display: none;
+  }
+}
+@media (max-width: 460px) {
+  nz-header {
+    flex-direction: column;
+    height: auto !important;
+  }
+}

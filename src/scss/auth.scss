@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+@import "./variable/_variable.scss";
+
+.main-section {
+  display: flex !important;
+  align-items: center !important;
+  .login-container {
+    background-color: $background-color;
+    width: 100%;
+    height: 100vh;
+    transition-property: border-radius, height;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+
+    @media screen and (min-width: 400px) {
+      border-radius: 1.6rem;
+    }
+
+    @media screen and (min-width: 700px) {
+      max-width: 550px;
+      height: auto;
+    }
+
+    .login-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 42px 20px;
+      max-width: 310px;
+      margin: 0 auto;
+      text-align: center;
+
+      p {
+        font-size: 1.1rem;
+        margin: 0;
+
+        strong {
+          color: $icon-color;
+        }
+      }
+
+      .login-content_header {
+        text-align: center;
+
+        span#logo {
+          font-size: 1.8rem;
+          font-weight: 800;
+        }
+
+        li i {
+          color: $header-logo-color;
+        }
+
+        h2 {
+          font-size: 2rem;
+          line-height: 1;
+          margin: 0 0 25px 0;
+          background-image: linear-gradient(
+            to right,
+            #596bcb,
+            #d3d5fe,
+            #fcf07a,
+            #ffc03f
+          );
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        p {
+          font-size: 13px;
+          margin: 0 0 25px 0;
+          color: $header-color;
+        }
+        span {
+          color: $black;
+        }
+
+        strong {
+          color: $red;
+        }
+      }
+
+      .form-container {
+        width: 100%;
+
+        .login-form {
+          display: flex;
+          flex-direction: column;
+
+          .error-message {
+            margin: 0px;
+            text-align: start;
+            font-size: 15px;
+            color: $red;
+          }
+
+          span {
+            height: 15px;
+          }
+          nz-input-group {
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+          }
+
+          input {
+            border-radius: 5px;
+            width: 100%;
+            color: $black;
+          }
+          .otp-input {
+            width: 20%;
+          }
+
+          .submit {
+            background-color: $submit-bg-color;
+            color: $submit-color;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            border: 1px solid $border-color;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 8px 0 0 0;
+            cursor: pointer;
+            span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+
+          .hide-password,
+          .hide-confirm,
+          .hide {
+            background: none;
+            border: none;
+            position: absolute;
+            cursor: pointer;
+
+            &:focus {
+              outline: none;
+            }
+
+            .fa {
+              font-size: 1.2em;
+            }
+          }
+
+          .hide-password {
+            right: 80px;
+            top: 370px;
+          }
+
+          .hide-confirm {
+            right: 71px;
+            top: 428px;
+          }
+
+          .hide {
+            right: 125px;
+            top: 199px;
+          }
+        }
+
+        .forgot {
+          text-align: end;
+
+          a {
+            font-size: 15px;
+          }
+        }
+
+        .login-networks {
+          margin-top: 1rem;
+
+          .login-icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 20px;
+            padding: 0px;
+
+            li {
+              list-style: none;
+              background-color: #d3d5fe;
+              padding: 10px 12px;
+              border-radius: 8px;
+
+              i {
+                color: $header-logo-color;
+              }
+            }
+          }
+        }
+      }
+    }
+    p {
+      font-size: 1rem !important;
+      margin-top: 1rem !important;
+      a {
+        cursor: pointer;
+        color: $submit-bg-color;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  body {
+    margin: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .hide-password,
+  .hide-confirm,
+  .hide {
+    display: none;
+  }
+}
+/* global styles */
+body {
+  width: 100%;
+  height: 100%;
+}
+.main {
+  height: 100%;
+  .img {
+    max-height: 742px;
+    img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+/* media */
+@media screen and (max-width: 700px) {
+  .img {
+    display: none !important;
+  }
+
+  .main-section {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    .login-container {
+      height: auto;
+      border-radius: 0;
+    }
+  }
+}
+
+/* media (mobile devices) */
+@media screen and (max-width: 400px) {
+  .login-container {
+    height: auto !important;
+  }
+}

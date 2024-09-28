@@ -1,0 +1,76 @@
+<div nz-row class="main">
+    <div nz-col nzSpan="15" class="img">
+        <img src="../assets/image/book-your-date.jpg" alt="">
+    </div>
+    <div nz-col nzSpan="9" class="main-section">
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-content_header">
+                    <h2>Registration</h2>
+                </div>
+                <div class="form-container">
+                    <form nz-form [formGroup]="validateForm" (ngSubmit)="onSubmit()" class="login-form">
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="firstNameErrorMessage" class="error-message">
+                                <nz-input-group>
+                                    <input nz-input formControlName="firstName" placeholder="First name">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="lastNameErrorMessage" class="error-message">
+                                <nz-input-group>
+                                    <input nz-input formControlName="lastName" placeholder="Last name">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="usernameErrorMessage" class="error-message">
+                                <nz-input-group>
+                                    <input nz-input formControlName="username" placeholder="Username">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="emailErrorMessage" class="error-message">
+                                <nz-input-group>
+                                    <input nz-input type="email" formControlName="email" placeholder="Email">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="passwordErrorMessage" class="error-message">
+                                <nz-input-group [nzSuffix]="suffixTemplate">
+                                    <input nz-input [type]="passwordVisible ? 'text' : 'password'"
+                                        formControlName="password" placeholder="Password">
+                                </nz-input-group>
+                                <ng-template #suffixTemplate>
+                                    <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                        (click)="passwordVisible = !passwordVisible"></span>
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="confirmPasswordErrorMessage" class="error-message">
+                                <nz-input-group>
+                                    <input nz-input type="password" formControlName="confirmPassword"
+                                        placeholder="Confirm Password">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+
+                        <button nz-button class="submit" [nzType]="'primary'">Submit</button>
+                    </form>
+                </div>
+                <p>
+                    Already have an account? <a routerLink="/login">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

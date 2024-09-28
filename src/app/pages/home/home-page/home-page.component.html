@@ -1,0 +1,129 @@
+<nz-layout class="main-layout">
+  <nz-sider nzWidth="281px" nzTheme="light" class="sidebar-container">
+    <div class="logo">
+      <img src="../assets/image/google-logo.png" alt="">
+      <p>Google Calendar</p>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" class="sider-menu list">
+      <li nz-submenu nzOpen nzIcon="calendar" nzTitle="My Calendar">
+        <ul>
+          <nz-tabset>
+            <nz-tab nzTitle="Default">
+              <nz-date-picker nzInline></nz-date-picker>
+            </nz-tab>
+          </nz-tabset>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="My Categories" nzIcon="carry-out">
+        <ul class="checkbox-container">
+          <nz-checkbox-wrapper (nzOnChange)="filter($event)">
+            <div nz-row>
+              <div nz-col nzSpan="8"><label nz-checkbox nzValue="All" [ngModel]="true">All</label></div>
+              <div nz-col nzSpan="8"><label nz-checkbox nzValue="Task">Task</label></div>
+              <div nz-col nzSpan="8"><label nz-checkbox nzValue="Birthdays">Birthdays</label></div>
+              <div nz-col nzSpan="8"><label nz-checkbox nzValue="Daily Sync">Daily Sync</label></div>
+              <div nz-col nzSpan="8"><label nz-checkbox nzValue="Holidays in India">Holidays in India</label></div>
+            </div>
+          </nz-checkbox-wrapper>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Categories list" nzIcon="unordered-list">
+        <ul>
+          <li nz-menu-item>Task</li>
+          <li nz-menu-item>Birthdays</li>
+          <li nz-menu-item>Daily Sync</li>
+          <li nz-menu-item>Holidays in India</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="header-container">
+      <h1>My Calendar</h1>
+      <div class="profile-container">
+        <div class="profile-name">
+          <span class="user-name">{{ userName }}</span>
+          <span class="user-email">{{ userEmail }}</span>
+        </div>
+        <nz-avatar [nzTooltipTitle]="userTooltip" nzTooltipPlacement="bottomRight" nz-button nz-tooltip
+          [ngStyle]="{ 'background-image': 'url(' + avatarImageUrl + ')', 'background-size': 'cover' }" nz-popconfirm
+          [nzPopconfirmTitle]="popconfirmTitleTemplate" nzOverlayClassName="custom-popconfirm" (nzOnConfirm)="confirm()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="bottomRight" nz-button class="avatar"></nz-avatar>
+        <ng-template #popconfirmTitleTemplate>
+          <div class="popconfirm-content">
+            <div class="profile-details">
+              <span class="user-email">{{ userEmail }}</span>
+              <nz-avatar [ngStyle]="{ 'background-image': 'url(' + avatarImageUrl + ')', 'background-size': 'cover' }"
+                alt="Avatar" class="avatar"></nz-avatar>
+              <span class="user-name">Hi, {{ userName }}!</span>
+
+            </div>
+            <div class="button-content">
+              <button nz-button (click)="goToProfile()" class="add-account"><i class="fa-solid fa-user-plus"></i> <span>
+                  Add account</span></button>
+              <button nz-button (click)="logout()" class="sign-out"><i class="fa-solid fa-right-from-bracket"></i> Sign
+                out</button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<!-- event modal -->
+
+<ng-template #eventModalContent>
+  <div class="event-modal-container">
+    <form [formGroup]="eventForm" class="form-container">
+      <div>
+        <label>Event Title</label>
+        <input nz-input placeholder="Event Name" formControlName="eventTitle" />
+      </div>
+      <div>
+        <label>Category</label>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a category" formControlName="category">
+          <nz-option nzLabel="Task" nzValue="Task"></nz-option>
+          <nz-option nzLabel="Birthdays" nzValue="Birthdays"></nz-option>
+          <nz-option nzLabel="Daily Sync" nzValue="Daily Sync"></nz-option>
+          <nz-option nzLabel="Holidays in India" nzValue="Holidays in India"></nz-option>
+        </nz-select>
+      </div>
+      <div>
+        <label>Guest</label>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a guest" formControlName="guest">
+          <nz-option *ngFor="let guest of guests" [nzLabel]="guest.label" [nzValue]="guest.value"></nz-option>
+        </nz-select>
+      </div>
+      <div>
+        <label nz-checkbox formControlName="allDay" (ngModelChange)="onAllDayChange($event)">All Day</label>
+      </div>
+      <div class="time-content">
+        <div>
+          <label>Start & End Time</label>
+          <nz-range-picker formControlName="dateTime" [nzDisabled]="isDisabled" [nzShowTime]="{ nzFormat: 'HH:mm' }"
+            nzFormat="yyyy-MM-dd HH:mm" ngModel></nz-range-picker>
+        </div>
+      </div>
+      <div class="color-palette">
+        <label>Color</label>
+        <nz-radio-group formControlName="selectedColor">
+          <label nz-radio-button class="color1" nzValue="#bcafff"></label>
+          <label nz-radio-button class="color2" nzValue="#7fc5fa"></label>
+          <label nz-radio-button class="color3" nzValue="#7ec196"></label>
+          <label nz-radio-button class="color4" nzValue="#fed59a"></label>
+          <label nz-radio-button class="color5" nzValue="#c0c0c1"></label>
+          <label nz-radio-button class="color6" nzValue="#FF9800"></label>
+          <label nz-radio-button class="color7" nzValue="#00BCD4"></label>
+          <label nz-radio-button class="color8" nzValue="purple"></label>
+          <label nz-radio-button class="color9" nzValue="green"></label>
+        </nz-radio-group>
+      </div>
+    </form>
+  </div>
+</ng-template>

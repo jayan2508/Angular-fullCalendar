@@ -1,0 +1,33 @@
+@import "ngx-toastr/toastr";
+@import "../scss/auth.scss";
+@import "../scss/variable/_variable.scss";
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Bricolage Grotesque", sans-serif !important;
+  font-style: normal;
+  font-size: 1.2rem;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+.login-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px;
+  padding: 0px;
+
+  li {
+    background-color: #d3d5fe;
+    padding: 10px 12px;
+    border-radius: 8px;
+    list-style: none;
+  }
+}

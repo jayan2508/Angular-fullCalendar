@@ -1,0 +1,48 @@
+<div nz-row class="main">
+    <div nz-col nzSpan="15" class="img">
+        <img src="../assets/image/book-your-date.jpg" alt="">
+    </div>
+    <div nz-col nzSpan="9" class="main-section">
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-content_header">
+                    <h2>Login</h2>
+                </div>
+                <div class="form-container">
+                    <form nz-form [formGroup]="validateForm" (ngSubmit)="onSubmit()" class="login-form">
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="Username or Email is required." class="error-message">
+                                <nz-input-group>
+                                    <input nz-input type="text" formControlName="userName"
+                                        placeholder="Username or Email">
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzErrorTip]="passwordErrorMessage" class="error-message">
+                                <nz-input-group [nzSuffix]="suffixTemplate">
+                                    <input nz-input [type]="passwordVisible ? 'text' : 'password'"
+                                        formControlName="password" placeholder="Password">
+                                </nz-input-group>
+                                <ng-template #suffixTemplate>
+                                    <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                        (click)="passwordVisible = !passwordVisible"></span>
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+                        <div class="forgot">
+                            <a routerLink="/forgotPassword">Forgot Password?</a>
+                        </div>
+                        <button nz-button class="login-form-button login-form-margin submit" [nzType]="'primary'">Log
+                            in</button>
+                    </form>
+                </div>
+                <p>
+                    Don't have an account? <a routerLink="/register">Register</a>
+                </p>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

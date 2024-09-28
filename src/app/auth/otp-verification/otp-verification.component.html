@@ -1,0 +1,34 @@
+<div nz-row class="main">
+    <div nz-col nzSpan="15" class="img">
+        <img src="../assets/image/book-your-date.jpg" alt="">
+    </div>
+    <div nz-col nzSpan="9" class="main-section">
+        <div class="login-container">
+            <div class="login-content">
+                <div class="login-content_header">
+                    <ul class="login-icons">
+                        <li>
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </li>
+                    </ul>
+                    <h2>Enter your code</h2>
+                    <p>We sent a code to <span>{{email}}</span></p>
+                    <p>OTP expires in: <strong>{{ countdown }} seconds</strong></p>
+                    <p>OTP: <strong>{{myOtp}}</strong> </p>
+                </div>
+                <div class="form-container">
+                    <form nz-form class="login-form">
+                        <div class="otp-input-fields">
+                            <ng-otp-input [config]="otpConfig" (onInputChange)="handleOtpChange($event)" class="otp-input"></ng-otp-input>
+                        </div>
+                        <button nz-button class="submit" (click)="verifyOtp($event)">Continue</button>
+                    </form>
+                </div>
+                <p>
+                    Didn't receive the email?<a routerLink="/forgotpassword">Resend</a>
+                </p>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
